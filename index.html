@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="pt_BR">
+  <head>
+    <!-- PAGE INFO -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>NF Distribuição</title>
+
+    <!-- Icones -->
+    <link rel="stylesheet" href="assets/fonts/style.css" />
+
+    <!-- Swiper -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/swiper/swiper-bundle.min.css"
+    />
+
+    <!-- STYLES -->
+    <link rel="stylesheet" href="style.css" />
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header id="header">
+      <nav class="container">
+        <a class="logo" href="#">NF<span> distribuição & representação</span></a>
+        <!-- menu -->
+        <div class="menu">
+          <ul class="grid">
+            <li><a class="title" href="#home">Início</a></li>
+            <li><a class="title" href="#about">Sobre</a></li>
+            <li><a class="title" href="#services">Produtos</a></li>
+            <li><a class="title" href="#contact">Contato</a></li>
+            
+            
+          </ul>
+        </div>
+
+        
+        <!-- /menu -->
+        <div class="toggle icon-menu"></div>
+        <div class="toggle icon-close"></div>
+      </nav>
+
+      <!-- Botão do Carrinho com Imagem -->
+      <li class="cart-button" id="cart-button">
+        <button class="toggle" id="open-cart-modal">
+          <img src="https://cdn.pixabay.com/photo/2016/10/10/14/46/icon-1728552_640.jpg" alt="Carrinho de Compras">
+          <span id="cart-quantity">(0)</span>
+        </button>
+      </li>
+
+      <!-- Modal do Carrinho -->
+      <div id="cart-modal" class="modal">
+        <div class="modal-content">
+          <span class="close" onclick="closeCartModal()">&times;</span>
+          <h2 class="title">Resumo do Carrinho</h2>
+          <style>
+            .imagem-redimensionada {
+              max-width: 100%; /* Largura máxima igual à largura do contêiner pai */
+              height: auto; /* Altura automática para manter a proporção original */
+            }
+          </style>
+          <div id="cart-summary" class="cart-summary">
+            <!-- Itens do carrinho e formulário adicionados aqui -->
+          </div>
+          <h2 class="title">Preencha seus dados</h2>
+          <form id="user-info-form">
+            <div class="form-group">
+              <label for="name">Nome:</label>
+              <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+              <label for="phone">Telefone:</label>
+              <input type="tel" id="phone" name="phone" required>
+            </div>
+            <button type="button" onclick="sendOrder()" class="selecionar-button">Enviar Solicitação</button>
+          </form>
+        </div>
+      </div>
+
+    </header>
+
+    <main>
+      <!-- HOME -->
+      <section class="section" id="home">
+        <div class="container grid">
+          <div class="image">
+            <img
+              src="assets/fotos/logo02.png"
+              alt="logo02"
+            />
+          </div>
+        </div>
+      </section>
+
+      <div class="divider-1"></div>
+
+      <!-- ABOUT -->
+      <section class="section" id="about">
+        <div class="container grid">
+          <div class="image">
+            <img
+              src="assets/fotos/logo01.png"
+              alt="logo01"
+            />
+          </div>
+          <div class="text">
+            <h2 class="title">Sobre nós</h2>
+            <p>
+              A NF Distribuição e Representação é uma empresa dedicada à prestação de serviços de 
+              representação comercial e vendas diretas no segmento de materiais de construção.
+            </p>
+            <br/>
+            <p>
+              Com sede na região metropolitana do Recife, Pernambuco, a empresa possui uma sólida
+              presença no mercado local, atendendo a clientes de armazéns de construção.
+            </p>
+            <br/>
+            <p>
+              Representação Comercial: Atuamos como intermediários entre distribuidores e clientes, 
+              promovendo produtos de qualidade e estabelecendo parcerias sólidas.<br/>
+              Vendas Diretas: Oferecemos uma ampla variedade de materiais de construção diretamente
+              aos clientes, garantindo conveniência e facilidade na aquisição dos produtos.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider-2"></div>
+
+      <!-- PRODUTOS -->
+      <section class="section" id="services">
+        <div class="container grid">
+          <header>
+            <h2 class="title">Produtos</h2>
+          </header>
+          <div class="cards grid">
+
+            <div class="card" data-modal="modal01">
+              <img src="assets/fotos/modal01.png" alt="modal01">
+              <h3 class="title">Bucha D-6 (1000unds)</h3>
+              <p>R$ 32,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal01" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Bucha D-6 (1000unds)', 'modal01')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal02">
+              <img src="assets/fotos/modal02.png" alt="modal02">
+              <h3 class="title">Bucha D-8 (500unds)</h3>
+              <p>R$ 27,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal02" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Bucha D-8 (500unds)', 'modal02')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal03">
+              <img src="assets/fotos/modal03.png" alt="modal03">
+              <h3 class="title">Bucha D-10 (250unds)</h3>
+              <p>R$ 30,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal03" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Bucha D-10 (250unds)', 'modal03')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal04">
+              <img src="assets/fotos/modal04.png" alt="modal04">
+              <h3 class="title">Pino Tee Cubo 2P (10A e 20A)</h3>
+              <p>R$ 3,50</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal04" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Pino Tee Cubo 2P (10A e 20A)', 'modal04')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal05">
+              <img src="assets/fotos/modal05.png" alt="modal05">
+              <h3 class="title">Pino Tee Bob Esponja (10A e 20A)</h3>
+              <p>R$ 2,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal05" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Pino Tee Bob Esponja (10A e 20A)', 'modal05')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal06">
+              <img src="assets/fotos/modal06.png" alt="modal06">
+              <h3 class="title">Pino Tee 3 Pontas (10A e 20A)</h3>
+              <p>R$ 2,50</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal06" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Pino Tee 3 Pontas (10A e 20A)', 'modal06')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal07">
+              <img src="assets/fotos/modal07.png" alt="modal07">
+              <h3 class="title">Parafuso Phillips Chipboard 3,5x30 C/C(500unds)</h3>
+              <p>R$ 28,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal07" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Phillips Chipboard 3,5x30 C/C(500unds)', 'modal07')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal08">
+              <img src="assets/fotos/modal07.png" alt="modal08">
+              <h3 class="title">Parafuso Phillips Chipboard 3,5x40 C/C(500unds)</h3>
+              <p>R$ 32,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal08" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Phillips Chipboard 3,5x40 C/C(500unds)', 'modal08')">Adicionar ao Carrinho</button>
+            </div>
+            
+            <div class="card" data-modal="modal09">
+              <img src="assets/fotos/modal08.png" alt="modal09">
+              <h3 class="title">Parafuso Phillips Chipboard 3,5x50 C/C(500unds)</h3>
+              <p>R$ 60,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal09" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Phillips Chipboard 3,5x50 C/C(500unds)', 'modal09')">Adicionar ao Carrinho</button>
+            </div>
+
+            
+            <div class="card" data-modal="modal11">
+              <img src="assets/fotos/modal07.png" alt="modal11">
+              <h3 class="title">Parafuso Phillips Chipboard 4,5x16 C/C(500unds)</h3>
+              <p>R$ 26,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal11" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Phillips Chipboard 4,5x16 C/C(500unds)', 'modal11')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal12">
+              <img src="assets/fotos/modal08.png" alt="modal12">
+              <h3 class="title">Parafuso Phillips Chipboard 4,5x35 C/C(500unds)</h3>
+              <p>R$ 52,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal12" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Phillips Chipboard 4,5x35 C/C(500unds)', 'modal12')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal13">
+              <img src="assets/fotos/modal08.png" alt="modal13">
+              <h3 class="title">Parafuso Phillips Chipboard 5,0x25 C/C(500unds)</h3>
+              <p>R$ 48,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal13" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Phillips Chipboard 5,0x25 C/C(500unds)', 'modal13')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal14">
+              <img src="assets/fotos/modal07.png" alt="modal14">
+              <h3 class="title">Parafuso Phillips Chipboard 5,0x50 C/C(200unds)</h3>
+              <p>R$ 37,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal14" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Phillips Chipboard 5,0x50 C/C(200unds)', 'modal14')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal15">
+              <img src="assets/fotos/modal07.png" alt="modal15">
+              <h3 class="title">Parafuso Phillips Chipboard 6,0x60 C/C(100unds)</h3>
+              <p>R$ 28,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal15" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Phillips Chipboard 6,0x60 C/C(100unds)', 'modal15')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal16">
+              <img src="assets/fotos/modal07.png" alt="modal16">
+              <h3 class="title">Parafuso Phillips Chipboard 6,0x70 C/C(100unds)</h3>
+              <p>R$ 30,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal16" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Phillips Chipboard 6,0x70 C/C(100unds)', 'modal16')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal17">
+              <img src="assets/fotos/modal09.png" alt="modal17">
+              <h3 class="title">Parafuso Sextavado Rosca Soberba 1/4x50 C/C(100unds)</h3>
+              <p>R$ 34,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal17" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Sextavado Rosca Soberba 1/4x50 C/C(100unds)', 'modal17')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal18">
+              <img src="assets/fotos/modal09.png" alt="modal18">
+              <h3 class="title">Parafuso Sextavado Rosca Soberba 1/4x60 C/C(100unds)</h3>
+              <p>R$ 40,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal18" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Sextavado Rosca Soberba 1/4x60 C/C(100unds)', 'modal18')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal19">
+              <img src="assets/fotos/modal09.png" alt="modal19">
+              <h3 class="title">Parafuso Sextavado Rosca Soberba 1/4x70 C/C(100unds)</h3>
+              <p>R$ 45,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal19" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Sextavado Rosca Soberba 1/4x70 C/C(100unds)', 'modal19')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal20">
+              <img src="assets/fotos/modal09.png" alt="modal20">
+              <h3 class="title">Parafuso Sextavado Rosca Soberba 5/16x60 C/C(100unds)</h3>
+              <p>R$ 67,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal20" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Sextavado Rosca Soberba 5/16x60 C/C(100unds)', 'modal20')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal21">
+              <img src="assets/fotos/modal10.png" alt="modal21">
+              <h3 class="title">Parafuso Sextavado Rosca Total 3/16x1" C/C(200unds)</h3>
+              <p>R$ 28,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal21" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Sextavado Rosca Total 3/16x1 C/C(200unds)', 'modal21')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal22">
+              <img src="assets/fotos/modal10.png" alt="modal22">
+              <h3 class="title">Parafuso Sextavado Rosca Total 3/16x2" C/C(200unds)</h3>
+              <p>R$ 44,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal22" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Sextavado Rosca Total 3/16x2 C/C(200unds)', 'modal22')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal23">
+              <img src="assets/fotos/modal10.png" alt="modal23">
+              <h3 class="title">Parafuso Sextavado Rosca Total 1/4x1" C/C(200unds)</h3>
+              <p>R$ 50,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal23" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Sextavado Rosca Total 1/4x1 C/C(200unds)', 'modal23')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal24">
+              <img src="assets/fotos/modal10.png" alt="modal24">
+              <h3 class="title">Parafuso Sextavado Rosca Total 1/4x2.1/2" C/C(100unds)</h3>
+              <p>R$ 48,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal24" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Sextavado Rosca Total 51/4x2.1/2 C/C(100unds)', 'modal24')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal25">
+              <img src="assets/fotos/modal10.png" alt="modal25">
+              <h3 class="title">Parafuso Sextavado Rosca Total 5/16x2" C/C(100unds)</h3>
+              <p>R$ 67,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal25" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Sextavado Rosca Total 5/16x2 C/C(100unds)', 'modal25')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal26">
+              <img src="assets/fotos/modal11.png" alt="modal26">
+              <h3 class="title">Parafuso Tampinha 4,8x50 C/C(200unds)</h3>
+              <p>R$ 55,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal26" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Tampinha 4,8x50 C/C(200unds)', 'modal26')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal27">
+              <img src="assets/fotos/modal11.png" alt="modal27">
+              <h3 class="title">Parafuso Tampinha 5,5x65 C/C(100unds)</h3>
+              <p>R$ 43,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal27" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Tampinha 5,5x65 C/C(100unds)', 'modal27')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal28">
+              <img src="assets/fotos/modal12.png" alt="modal28">
+              <h3 class="title">Parafuso Autotarraxante 4,8x50 C/C(200unds)</h3>
+              <p>R$ 50,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal28" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Parafuso Tampinha 5,5x65 C/C(100unds)', 'modal28')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal29">
+              <img src="assets/fotos/modal13.png" alt="modal29">
+              <h3 class="title">Porca Sextavada em Polegada BSW 3/16 C/C(500unds)</h3>
+              <p>R$ 36,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal29" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Porca Sextavada em Polegada BSW 3/16 C/C(500unds)', 'modal29')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal30">
+              <img src="assets/fotos/modal13.png" alt="modal30">
+              <h3 class="title">Porca Sextavada em Polegada 1/4 C/C(200unds)</h3>
+              <p>R$ 27,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal30" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Porca Sextavada em Polegada 1/4 C/C(200unds)', 'modal30')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal31">
+              <img src="assets/fotos/modal13.png" alt="modal31">
+              <h3 class="title">Porca Sextavada em Polegada 5/16 C/C(200unds)</h3>
+              <p>R$ 36,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal31" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Porca Sextavada em Polegada 1/4 C/C(200unds)', 'modal31')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal32">
+              <img src="assets/fotos/modal13.png" alt="modal32">
+              <h3 class="title">Porca Sextavada em Milímetro M4 C/C(500unds)</h3>
+              <p>R$ 25,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal32" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Porca Sextavada em Milímetro M4 C/C(500unds)', 'modal32')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal33">
+              <img src="assets/fotos/modal13.png" alt="modal33">
+              <h3 class="title">Porca Sextavada em Milímetro M5 C/C(500unds)</h3>
+              <p>R$ 30,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal33" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Porca Sextavada em Milímetro M5 C/C(500unds)', 'modal33')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal34">
+              <img src="assets/fotos/modal13.png" alt="modal34">
+              <h3 class="title">Porca Sextavada em Milímetro M6 C/C(200unds)</h3>
+              <p>R$ 22,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal34" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Porca Sextavada em Milímetro M6 C/C(200unds)', 'modal34')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal35">
+              <img src="assets/fotos/modal13.png" alt="modal35">
+              <h3 class="title">Porca Sextavada em Milímetro M8 C/C(200unds)</h3>
+              <p>R$ 50,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal35" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Porca Sextavada em Milímetro M8 C/C(200unds)', 'modal35')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal36">
+              <img src="assets/fotos/modal14.png" alt="modal36">
+              <h3 class="title">Arruela Lisa em Polegada BSW 3/16" C/C(1kg)</h3>
+              <p>R$ 48,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal36" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Arruela Lisa em Polegada BSW 3/16 C/C(1kg)', 'modal36')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal37">
+              <img src="assets/fotos/modal14.png" alt="modal37">
+              <h3 class="title">Arruela Lisa em Polegada 1/4" C/C(1kg)</h3>
+              <p>R$ 35,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal37" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Arruela Lisa em Polegada 1/4 C/C(1kg)', 'modal37')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal38">
+              <img src="assets/fotos/modal14.png" alt="modal38">
+              <h3 class="title">Arruela Lisa em Polegada 3/8" C/C(1kg)</h3>
+              <p>R$ 35,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal37" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Arruela Lisa em Polegada 3/8 C/C(1kg)', 'modal38')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal39">
+              <img src="assets/fotos/modal14.png" alt="modal39">
+              <h3 class="title">Arruela Lisa em Polegada 1/2" C/C(1kg)</h3>
+              <p>R$ 37,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal39" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Arruela Lisa em Polegada 1/2 C/C(1kg)', 'modal39')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal40">
+              <img src="assets/fotos/modal15.png" alt="modal40">
+              <h3 class="title">Kit Parafuso Máquina para TV C/C(50pcts)</h3>
+              <p>R$ 100,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal40" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Kit Parafuso Máquina para TV C/C(50pcts)', 'modal40')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal41">
+              <img src="assets/fotos/modal19.png" alt="modal41">
+              <h3 class="title">Prateleira Vidro Retângular 8mm 15x40cm</h3>
+              <p>R$ 18,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal41" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Prateleira Vidro 8mm Retângular 15x40cm', 'modal41')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal42">
+              <img src="assets/fotos/modal19.png" alt="modal42">
+              <h3 class="title">Prateleira Vidro Retângular 8mm 15x50cm</h3>
+              <p>R$ 19,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal42" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Prateleira Vidro 8mm Retângular 15x50cm', 'modal42')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal43">
+              <img src="assets/fotos/modal19.png" alt="modal43">
+              <h3 class="title">Prateleira Vidro Retângular 8mm 10x30cm</h3>
+              <p>R$ 15,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal43" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Prateleira Vidro Retângular 8mm 10x30cm', 'modal43')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal44">
+              <img src="assets/fotos/modal19.png" alt="modal44">
+              <h3 class="title">Prateleira Vidro Retângular 8mm 10x40cm</h3>
+              <p>R$ 16,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal44" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Prateleira Vidro Retângular 8mm 10x40cm', 'modal44')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal45">
+              <img src="assets/fotos/modal19.png" alt="modal45">
+              <h3 class="title">Prateleira Vidro Retângular 8mm 10x50cm</h3>
+              <p>R$ 18,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal45" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Prateleira Vidro Retângular 8mm 10x50cm', 'modal45')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal46">
+              <img src="assets/fotos/modal18.png" alt="modal46">
+              <h3 class="title">Prateleira Vidro Canto 8mm 20x20cm</h3>
+              <p>R$ 16,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal46" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Prateleira Vidro Canto 8mm 20x20cm', 'modal46')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal47">
+              <img src="assets/fotos/modal18.png" alt="modal47">
+              <h3 class="title">Prateleira Vidro Canto 8mm 25x25cm</h3>
+              <p>R$ 17,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal47" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Prateleira Vidro Canto 8mm 25x25cm', 'modal47')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal48">
+              <img src="assets/fotos/modal18.png" alt="modal48">
+              <h3 class="title">Prateleira Vidro Canto 8mm 30x30cm</h3>
+              <p>R$ 18,00</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal48" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Prateleira Vidro Canto 8mm 30x30cm', 'modal48')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal49">
+              <img src="assets/fotos/modal21.png" alt="modal49">
+              <h3 class="title">Número de Vidro (0)</h3>
+              <p>R$ 2,50</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal49" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Número de Vidro (0)', 'modal49')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal50">
+              <img src="assets/fotos/modal21.png" alt="modal50">
+              <h3 class="title">Número de Vidro (1)</h3>
+              <p>R$ 2,50</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal50" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Número de Vidro (1)', 'modal50')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal51">
+              <img src="assets/fotos/modal21.png" alt="modal51">
+              <h3 class="title">Número de Vidro (2)</h3>
+              <p>R$ 2,50</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal51" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Número de Vidro (2)', 'modal51')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal52">
+              <img src="assets/fotos/modal21.png" alt="modal52">
+              <h3 class="title">Número de Vidro (3)</h3>
+              <p>R$ 2,50</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal52" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Número de Vidro (3)', 'modal52')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal53">
+              <img src="assets/fotos/modal21.png" alt="modal53">
+              <h3 class="title">Número de Vidro (4)</h3>
+              <p>R$ 2,50</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal53" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Número de Vidro (4)', 'modal53')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal54">
+              <img src="assets/fotos/modal21.png" alt="modal54">
+              <h3 class="title">Número de Vidro (5)</h3>
+              <p>R$ 2,50</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal54" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Número de Vidro (5)', 'modal54')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal55">
+              <img src="assets/fotos/modal21.png" alt="modal55">
+              <h3 class="title">Número de Vidro (6)</h3>
+              <p>R$ 2,50</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal55" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Número de Vidro (6)', 'modal55')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal56">
+              <img src="assets/fotos/modal21.png" alt="modal56">
+              <h3 class="title">Número de Vidro (7)</h3>
+              <p>R$ 2,50</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal56" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Número de Vidro (7)', 'modal56')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal57">
+              <img src="assets/fotos/modal21.png" alt="modal57">
+              <h3 class="title">Número de Vidro (8)</h3>
+              <p>R$ 2,50</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal57" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Número de Vidro (8)', 'modal57')">Adicionar ao Carrinho</button>
+            </div>
+
+            <div class="card" data-modal="modal58">
+              <img src="assets/fotos/modal21.png" alt="modal58">
+              <h3 class="title">Número de Vidro (9)</h3>
+              <p>R$ 2,50</p>
+                <!-- Botão "Selecionar" aqui -->
+                <input type="number" id="quantity-modal58" value="1" min="1" max="10">
+                <button class="selecionar-button" onclick="addToCart('Número de Vidro (9)', 'modal58')">Adicionar ao Carrinho</button>
+            </div>
+
+          </div>
+        </div>
+      
+      </section>
+        
+      <div class="divider-1"></div>
+
+      <div class="divider-2"></div>
+
+      <!-- CONTACT -->
+      <section class="section" id="contact">
+        <div class="container grid">
+          <div class="text">
+            <h2 class="title">Entre em contato com a gente!</h2>
+            <p>
+              Entre em contato com a NF Distribuição, queremos tirar suas dúvidas,
+              ouvir suas críticas e sugestões.
+            </p>
+            <a
+              href="https://api.whatsapp.com/send?phone=+5581982540904&text=Oi! Entrar em contato"
+              class="button"
+              target="_blank"
+              ><i class="icon-whatsapp"></i> Entrar em contato</a
+            >
+          </div>
+
+          <div class="links">
+            <ul class="grid">
+              <li><i class="icon-phone"></i> (81) 98254-0904</li>
+              <li><i class="icon-map-pin"></i> Paulista - PE, 53429-800</li>
+              <li><i class="icon-mail"></i> nrmendf20@gmail.com</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider-1"></div>
+    </main>
+
+    <footer class="section">
+      <div class="container grid">
+        <div class="brand">
+          <a class="logo logo-alt" href="#home">NF<span> distribuição & representação</span></a>
+          <p>©2024 NF Distribuição</p>
+          <p>Todos os direitos reservados. @nf_corporation</p>
+        </div>
+
+        <div class="social grid">
+          <a href="https://www.instagram.com/nfdistribuicao/" target="_blank">
+            <i class="icon-instagram"></i>
+          </a>
+        </div>
+      </div>
+    </footer>
+
+    <a href="#home" class="back-to-top"><i class="icon-arrow-up"></i></a>
+
+    <!-- swiper -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- scrollreveal -->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!-- main.js -->
+    <script src="main.js"></script>
+  </body>
+</html>
